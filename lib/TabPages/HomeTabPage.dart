@@ -1,8 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp_booking/Login/Login.dart';
 import 'package:fyp_booking/models/menuScreen.dart';
+import '../CategoryListRoom.dart';
 import '../HomePage.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import '../TopRatedHotels.dart';
 import '../models/data_hotel.dart';
 import 'FavoriteTabPage.dart';
 import 'hotelDetail.dart';
@@ -46,8 +49,9 @@ class _HomeTabPageState extends State<HomeTabPage> {
         title: Text("Book@t", style: TextStyle(fontSize: 23),),
         actions: [IconButton(icon: Icon(Icons.logout),
           onPressed: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginPage()));},),],
-        elevation: 0.0,
+        elevation: 1,
       ),
+      drawer: Drawer(),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -101,10 +105,13 @@ class _HomeTabPageState extends State<HomeTabPage> {
                       textCapitalization: TextCapitalization.sentences,
                     ),
               ),
+
                 Padding(
                   padding: EdgeInsets.only(right: MediaQuery.of(context).size.height/3.1, top: MediaQuery.of(context).size.height/34),
-                    child: const Text("Explore",style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                  child: const Text("Explore",style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                 ),
+                CategoryListRoom(),
+                TopRatedHotels(),
                 /*Container(
                   child: CarouselSlider(
                     items: [
@@ -164,7 +171,7 @@ class _HomeTabPageState extends State<HomeTabPage> {
                 const SizedBox(
                   height: 10,
                 ),
-                Container(
+                /*Container(
                   height: 40,
                   width: double.infinity,
                   child: ListView(
@@ -324,7 +331,7 @@ class _HomeTabPageState extends State<HomeTabPage> {
                         ),
                       );
                       }),
-                ),
+                ),*/
             ]
             ),
         ),

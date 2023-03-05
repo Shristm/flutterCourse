@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fyp_booking/Login/forgot_password.dart';
 import '../../HomePage.dart';
+import '../adminPanel.dart';
 import 'SignUpPage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -30,8 +31,9 @@ class _LoginPageState extends State<LoginPage> {
       Fluttertoast.showToast(msg: "Please enter the password");
     }else
     {
-      login();
-      //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomePage()));
+      //login();
+     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomePage()));
+      //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>AdminPanel()));
     }
 
   }
@@ -194,7 +196,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Future<void> login() async {
+Future<void> login() async {
     var response = await http.post(
       Uri.parse("https://eazycare-api-staging.dipendranath.com.np/api/v1/public-app/user-app/login"),//this url is api
       headers: {
